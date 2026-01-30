@@ -3,6 +3,11 @@
   "main": "src/worker.js",
   "workers_dev": true,
   "preview_urls": false,
+
+  "assets": {
+    "directory": "./public"
+  },
+
   "compatibility_date": "2026-01-30",
   "routes": [
     {

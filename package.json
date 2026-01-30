@@ -9,5 +9,9 @@
 	},
 	"devDependencies": {
 		"wrangler": "^4.61.1"
+	},
+	"dependencies": {
+		"@cloudflare/kv-asset-handler": "^0.4.2",
+		"itty-router": "^5.0.22"
 	}
 }

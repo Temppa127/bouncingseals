@@ -1,17 +1,18 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run "npm run dev" in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run "npm run deploy" to publish your worker
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
+import { Router } from 'itty-router'
+import { getAssetFromKV } from '@cloudflare/kv-asset-handler'
 
-export default {
-  async fetch(request, env, ctx) {
-    // You can view your logs in the Observability dashboard
-    console.info({ message: 'Hello World Worker received a request!' }); 
-    return new Response('Hello World!');
+const router = Router()
+
+// Serve static assets
+router.get('*', async (request, env, ctx) => {
+  try {
+    return await getAssetFromKV(
+      { request, waitUntil: ctx.waitUntil.bind(ctx) },
+      { cacheControl: { browserTTL: 3600 } }
+    )
+  } catch (err) {
+    return new Response('Not Found', { status: 404 })
   }
-};
+})
+
+export default router

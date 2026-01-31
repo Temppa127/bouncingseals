@@ -12,10 +12,11 @@ requestAnimationFrame(function animate() {
 })
 
 const game = document.getElementById("seals");
-const objects = [];
+const seals = [];
+const fish =  []
 const speed = 2;
 
-function spawnObject() {
+function spawnSeal() {
   const obj = document.createElement("div");
   obj.className = "object";
 
@@ -37,7 +38,7 @@ function spawnObject() {
 
   game.appendChild(obj);
 
-  objects.push({
+  seals.push({
     el: obj,
     x: x,
     m: mult
@@ -46,15 +47,15 @@ function spawnObject() {
 
 // Move objects every frame
 function update() {
-  for (let i = objects.length - 1; i >= 0; i--) {
-    const o = objects[i];
+  for (let i = seals.length - 1; i >= 0; i--) {
+    const o = seals[i];s.splic
     o.x -= o.m * speed;
     o.el.style.left = o.x + "px";
 
     // Remove when off-screen
     if (o.x < -100) {
       o.el.remove();
-      objects.splice(i, 1);
+      seals.splice(i, 1);
     }
   }
 
@@ -64,7 +65,7 @@ function update() {
 // Spawn every 1–2 seconds randomly
 setInterval(() => {
   if (Math.random() > 0.4) {
-    spawnObject();
+    spawnSeal();
   }
 }, 1000);
 
@@ -73,8 +74,26 @@ update();
 
 background.addEventListener("click", onClick)
 
+let mPos = {
+  x: null,
+  y: null
+}
+
+
+document.onmousemove = updateMouse
+
+
+function updateMouse(event)
+{
+
+  mPos.x = event.x
+  mPos.y = event.y
+
+}
 
 function onClick()
 {
-  console.log("bimp")
-}
+  
+
+  console.log(mPos.x)
+} 

@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#seals {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  overflow: hidden;
+  border: 2px solid #555;
+}
+
+#background {
+  position: absolute;
+  inset: 0;
+  background: url("../bg.jpg") no-repeat center;
+  background-size: 100% 100%;
+  z-index: 0;
+}
+
+/* Base object */
+.object {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  z-index: 1;
+}
+
+/* Animated GIF layered on top */
+.object .anim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../galumph.gif") no-repeat center / contain;
+  pointer-events: none;
+}

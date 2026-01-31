@@ -69,3 +69,12 @@ setInterval(() => {
 }, 1000);
 
 update();
+
+
+background.addEventListener("click", onClick)
+
+
+function onClick()
+{
+  console.log("bimp")
+}

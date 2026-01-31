@@ -63,9 +63,34 @@ function update() {
 
 // Spawn every 1–2 seconds randomly
 setInterval(() => {
-  if (Math.random() > 0.4) {
+  if (Math.random() > 0.333) {
     spawnObject();
   }
 }, 1000);
 
 update();
+
+
+var mousePos;
+
+document.onmousemove = handleMouseMove;
+
+function handleMouseMove(event) {
+  mousePos = {
+    x: event.pageX,
+    y: event.pageY
+    };
+  }
+  
+
+background.addEventListener("click", shootFish)
+
+function shootFish() {
+if(!mousePos){return}
+
+  
+  console.log("Clicked at " + String(mousePos.x) + ", " + String(mousePos.y))
+
+}
+
+console.log("hello world")

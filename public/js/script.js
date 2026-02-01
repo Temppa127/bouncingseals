@@ -65,7 +65,7 @@ function update() {
 // Spawn every 1–2 seconds randomly
 setInterval(() => {
   if (Math.random() > 0.333) {
-    spawnObject();
+    spawnSeal();
   }
 }, 1000);
 

@@ -67,7 +67,7 @@ setInterval(() => {
   if (Math.random() > 0.333) {
     spawnSeal();
   }
-}, 1000);
+}, 500);
 
 update();
 

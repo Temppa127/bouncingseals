@@ -17,7 +17,7 @@ const fish =  []
 const speed = 2;
 
 function parallaxScale(z) {
-  return Math.pow(1.25, z / 5)
+  return Math.pow(1.5, z / 5)
 }
 
 

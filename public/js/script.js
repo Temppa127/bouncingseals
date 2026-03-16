@@ -16,6 +16,22 @@ const seals = [];
 const fish =  []
 const speed = 2;
 
+function parallaxScale(z) {
+  return Math.pow(1.25, z / 5)
+}
+
+
+// Source - https://stackoverflow.com/a/1527820
+// Posted by Ionuț G. Stan, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-03-16, License - CC BY-SA 4.0
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+
 function spawnSeal() {
   const obj = document.createElement("div");
   obj.className = "object";
@@ -31,10 +47,14 @@ function spawnSeal() {
 
   const y = Math.random() * (game.clientHeight - 80);
   const x = game.clientWidth;
-  const mult = 1 + ((Math.random()/2.5) - 0.2)
+
+
+  const mult = parallaxScale(getRandomInt(-5,5));
 
   obj.style.left = x + "px";
   obj.style.top = y + "px";
+
+  obj.style.transform = `scale(${mult})`;
 
   game.appendChild(obj);
 
